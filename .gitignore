@@ -1,0 +1,5 @@
+.env
+venv
+key.py
+data.json
+flask_session
