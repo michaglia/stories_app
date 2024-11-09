@@ -38,10 +38,11 @@ def index():
     # Check if there are more stories
     if session['story_index'] < len(stories):
         story_data = stories[session['story_index']]
-        return render_template('index.html', story=story_data['story'], questions=story_data['questions'], story_id=story_data['id'])
+        title = story_data['title']  # Get the title of the story
+        return render_template('index.html', title=title, story=story_data['story'], questions=story_data['questions'], story_id=story_data['id'])
     else:
-        return render_template('end.html')  # Render an end page when done
-
+        return render_template('end.html') 
+    
 @app.route('/submit', methods=['POST'])
 def submit():
     story_index = session['story_index']
