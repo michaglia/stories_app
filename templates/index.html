@@ -51,17 +51,28 @@
         You will be asked some questions on it.</p>
 
     <h3>Story:</h3>
-    <p>{{ story }}</p>
+    <pre>{{ story }}</pre>
+        
 
     <h3>Questions:</h3>
     <form action="{{ url_for('submit') }}" method="POST">
         {% for question in questions %}
-            <div>
-                <label>{{ loop.index }}. {{ question }}</label><br>
-                <input type="radio" name="response_{{ loop.index }}" value="yes"> Yes
-                <input type="radio" name="response_{{ loop.index }}" value="no"> No
-                <input type="text" name="comment_{{ loop.index }}" placeholder="Your comment here..."><br><br>
+        <div class="question-container">
+            <label>{{ loop.index }}. {{ question }}</label><br>
+            
+            <div class="poll-options">
+                <div class="poll-option">
+                    <input type="radio" name="response_{{ loop.index }}" value="yes" id="yes-{{ loop.index }}">
+                    <label for="yes-{{ loop.index }}">Yes</label>
+                </div>
+                <div class="poll-option">
+                    <input type="radio" name="response_{{ loop.index }}" value="no" id="no-{{ loop.index }}">
+                    <label for="no-{{ loop.index }}">No</label>
+                </div>
             </div>
+            
+            <input type="text" name="comment_{{ loop.index }}" placeholder="Your comment here..."><br><br>
+        </div>
         {% endfor %}
         <button type="submit">Submit</button>
     </form>
