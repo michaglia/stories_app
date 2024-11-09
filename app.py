@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
-import os
+import os, json
 from flask_session import Session
 from dotenv import load_dotenv
 
