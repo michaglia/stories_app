@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, request, redirect, url_for, session
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 import json
 import os
 from flask_session import Session
@@ -18,7 +18,7 @@ def load_stories():
 @app.route('/')
 def index():
     if 'story_index' not in session:
-            session['story_index'] = 0  # Start at the first story
+        session['story_index'] = 0  # Start at the first story
     
     data = load_stories()  # Load stories from JSON file
     stories = data['stories']
@@ -26,7 +26,8 @@ def index():
     # Check if there are more stories
     if session['story_index'] < len(stories):
         story_data = stories[session['story_index']]
-        return render_template('index.html', story=story_data['story'], questions=story_data['questions'], story_id=story_data['id'])
+        story_title = story_data['title']  # Get the title of the story
+        return render_template('index.html', title=story_title, story=story_data['story'], questions=story_data['questions'], story_id=story_data['id'])
     else:
         return render_template('end.html')  # Render an end page when done
 

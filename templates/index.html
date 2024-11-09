@@ -16,8 +16,12 @@
             margin-top: 20px; /* Space above title */
         }
         h2 {
-            font-size: 1.8em; /* Subtitle size */
+            font-size: 2.0em; /* Subtitle size */
             margin: 20px 0 10px 0; /* Space around subtitle */
+        }
+        h3 {
+            font-size: 1.8em;
+            margin-bottom: 50px; /* More space below the title */
         }
         p {
             font-size: 1.2em; /* Smaller text size */
@@ -26,6 +30,18 @@
         ul {
             list-style-type: none; /* Remove bullet points */
             padding: 0; /* Remove padding */
+        }
+        .question-container {
+            margin-bottom: 20px; /* Space between each question */
+        }
+        .poll-options {
+            display: flex; /* Align poll options horizontally */
+            justify-content: column; /* Space the options evenly */
+            margin-left: 20px; /* Align poll options with question */
+        }
+        .poll-option {
+            display: block; /* Align options horizontally */
+            margin-bottom: 10px;
         }
         textarea {
             width: 80%; /* Width of the text area */
@@ -50,9 +66,11 @@
     <p>Please read carefully the following story. <br>
         You will be asked some questions on it.</p>
 
-    <h3>Story:</h3>
+    <!-- Title of the story -->
+    <h3>{{ title }}</h3> <!-- Insert the title here -->
+    
+    <!-- Story content -->
     <pre>{{ story }}</pre>
-        
 
     <h3>Questions:</h3>
     <form action="{{ url_for('submit') }}" method="POST">
